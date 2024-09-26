@@ -15,17 +15,17 @@ spec:
       containers:
       - name: mysql
         image: mysql:5.7
-        env:
+        env: #Define as variaveis de ambiente que serão passadas ao container
         - name: MYSQL_ROOT_PASSWORD
           value: password
-        - name: MYSQL_DATABASE
+        - name: MYSQL_DATABASE #Cria um DB com o valor wordpress automaticamente ao iniciar o container
           value: wordpress
         - name: MYSQL_PASSWORD
           value: wordpresspassword
-        volumeMounts: 
+        volumeMounts:  #Onde o volume sera criado no container
         - mountPath: /var/lib/mysql
           name: mysql-storage
-      volumes:
+      volumes: #Volumes utilizados no pod
       - name: mysql-storage
         persistentVolumeClaim:
           claimName: pvc-mysql
